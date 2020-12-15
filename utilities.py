@@ -1,17 +1,16 @@
+def encrypt(message):
+    cipher_key = len(message)
+    encrypted_message = ""
 
-def encrypt_emblem(emblem):
-    cipher_key = len(emblem)
-    encrypted_emblem = ""
-
-    for letter in emblem:
+    for letter in message:
         encrypted_ascii = ord(letter.upper()) + cipher_key
 
         if encrypted_ascii > 90:
             residue = encrypted_ascii - 90
-            encrypted_ascii = 65 + residue - 1
+            encrypted_ascii = 64 + residue
 
-        encrypted_emblem += chr(encrypted_ascii)
-    return list(encrypted_emblem)
+        encrypted_message += chr(encrypted_ascii)
+    return encrypted_message
 
 def count_letters(word):
     counts = {}
@@ -21,5 +20,5 @@ def count_letters(word):
             counts[letter] += 1
         else:
             counts[letter] = 1
-    
+
     return counts
