@@ -22,15 +22,15 @@ class King():
                                         ally_message = "".join(ally_message)))
 
     def analyze_support(self):
-        support = self.kingdom
+        support = [self.kingdom]
         minimum_support = 3
 
         for secret_message in self.secret_messages:
             if self.support_recieved(secret_message):
-                support += ' ' + secret_message.ally_kingdom
+                support.append(secret_message.ally_kingdom)
 
         if len(support) > minimum_support:
-            return support
+            return " ".join(support)
         else:
             return "NONE"   
 
